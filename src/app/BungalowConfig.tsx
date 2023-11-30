@@ -11,22 +11,40 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input"
 
+// interface BungalowConfigProps {
+//     onSelectValues: (values: {
+//         bungalowType: string | undefined;
+//         cornerPlot: string | undefined;
+//         facingType: string | undefined;
+//         fillingDepth: number | undefined;
+//         builtUpArea: number | undefined;
+//         landArea: number | undefined;
+//         totalLandArea: number | undefined;
+//         totalBuiltUpArea: number | undefined;
+//         numberOfFloors: number | undefined;
+//         baseBuiltupRate: number | undefined;
+//         landRateAtPurchase: number | undefined;
+//         // Add other selected values as needed
+//     }) => void;
+// }
 interface BungalowConfigProps {
     onSelectValues: (values: {
-        bungalowType: string | undefined;
-        cornerPlot: string | undefined;
-        facingType: string | undefined;
-        fillingDepth: number | undefined;
-        builtUpArea: number | undefined;
-        landArea: number | undefined;
-        totalLandArea: number | undefined;
-        totalBuiltUpArea: number | undefined;
-        numberOfFloors: number | undefined;
-        baseBuiltupRate: number | undefined;
-        landRateAtPurchase: number | undefined;
+        bungalowType?: string;
+        cornerPlot?: string;
+        facingType?: string;
+        fillingDepth?: number;
+        builtUpArea?: number;
+        landArea?: number;
+        totalLandArea?: number;
+        totalBuiltUpArea?: number;
+        numberOfFloors?: number;
+        baseBuiltupRate?: number;
+        landRateAtPurchase?: number;
         // Add other selected values as needed
     }) => void;
 }
+
+
 
 const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
     const [selectedBungalowType, setSelectedBungalowType] = React.useState<string | undefined>(undefined);
@@ -41,26 +59,56 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
     const [baseBuiltupRate, setBaseBuiltupRate] = React.useState<number | undefined>(undefined);
     const [landRateAtPurchase, setLandRateAtPurchase] = React.useState<number | undefined>(undefined);
 
+    // const handleFormSubmit = () => {
+    //     onSelectValues({
+    //         bungalowType: selectedBungalowType,
+    //         cornerPlot: selectedCornerPlot,
+    //         facingType: selectedFacingType,
+    //         fillingDepth: fillingDepth,
+    //         builtUpArea: builtUpArea,
+    //         landArea: landArea,
+    //         totalLandArea: totalLandArea,
+    //         totalBuiltUpArea: totalBuiltUpArea,
+    //         numberOfFloors: numberOfFloors,
+    //         baseBuiltupRate: baseBuiltupRate,
+    //         landRateAtPurchase: landRateAtPurchase,
+    //         // Add other selected values as needed
+    //     });
+    // };
     const handleFormSubmit = () => {
         onSelectValues({
             bungalowType: selectedBungalowType,
             cornerPlot: selectedCornerPlot,
             facingType: selectedFacingType,
-            fillingDepth: fillingDepth,
-            builtUpArea: builtUpArea,
-            landArea: landArea,
-            totalLandArea: totalLandArea,
-            totalBuiltUpArea: totalBuiltUpArea,
-            numberOfFloors: numberOfFloors,
-            baseBuiltupRate: baseBuiltupRate,
-            landRateAtPurchase: landRateAtPurchase,
+            fillingDepth,
+            builtUpArea,
+            landArea,
+            totalLandArea,
+            totalBuiltUpArea,
+            numberOfFloors,
+            baseBuiltupRate,
+            landRateAtPurchase,
             // Add other selected values as needed
         });
     };
+    
+    // const handleFormReset = () => {
+    //     setSelectedBungalowType('');
+    //     setSelectedCornerPlot('');
+    //     setSelectedFacingType('');
+    //     setFillingDepth(undefined);
+    //     setBuiltUpArea(undefined);
+    //     setLandArea(undefined);
+    //     setTotalLandArea(undefined);
+    //     setTotalBuiltUpArea(undefined);
+    //     setNumberOfFloors(undefined);
+    //     setBaseBuiltupRate(undefined);
+    //     setLandRateAtPurchase(undefined);
+    //   };
     const handleFormReset = () => {
-        setSelectedBungalowType('');
-        setSelectedCornerPlot('');
-        setSelectedFacingType('');
+        setSelectedBungalowType(undefined);
+        setSelectedCornerPlot(undefined);
+        setSelectedFacingType(undefined);
         setFillingDepth(undefined);
         setBuiltUpArea(undefined);
         setLandArea(undefined);
@@ -69,7 +117,8 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
         setNumberOfFloors(undefined);
         setBaseBuiltupRate(undefined);
         setLandRateAtPurchase(undefined);
-      };
+    };
+    
     return (
         // <div className="grid grid-cols-4 justify-center items-center py-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center py-6">
