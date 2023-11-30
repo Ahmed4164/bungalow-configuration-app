@@ -68,12 +68,14 @@ const BungalowConfig: React.FC = () => {
         let fillingRate = 100;
         let fillingCharge = fillingDepth ? fillingDepth * fillingRate : 0;
 
-        let facingCharge = subTotal * facing;
-        let cornerCharge = subTotal * cornerFactor;
+        // let facingCharge = subTotal * facing;
+        // let cornerCharge = subTotal * cornerFactor;
+        // let grandTotal =
+        //     subTotal + cornerCharge + facingCharge + fillingCharge + remotenessCharge;
         let remotenessCharge = 100;
-
-        let grandTotal =
-            subTotal + cornerCharge + facingCharge + fillingCharge + remotenessCharge;
+        let facingCharge = (subTotal ?? 0) * facing;
+        let cornerCharge = (subTotal ?? 0) * cornerFactor;
+        let grandTotal = (subTotal ?? 0) + cornerCharge + facingCharge + fillingCharge + remotenessCharge;
         setCurrentLandRate(currentLandRate);
         setNetSellingLandPrice(NetSellingLandPrice);
         setLandPrice(landPrice);
