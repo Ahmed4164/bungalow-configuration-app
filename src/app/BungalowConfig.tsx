@@ -116,7 +116,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Bungalow Type</h3>
+                            <h3 className="font-semibold">Bungalow Type</h3>
                             <DropdownMenu>
                                 <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
                                     <Button variant="outline">{selectedBungalowType || 'Select Bungalow Type'}</Button>
@@ -168,7 +168,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Land Area</h3>
+                            <h3 className="font-semibold">Land Area</h3>
                             <Input type="number" className="sm:w-56  my-3" placeholder="Land Area" value={landArea || ""}
                                 onChange={(e) => setLandArea(Number(e.target.value))} />
                         </div>
@@ -177,7 +177,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Built-Up Area</h3>
+                            <h3 className="font-semibold">Built-Up Area</h3>
                             <Input type="number" className="sm:w-56  my-3" placeholder="Built-Up Area" value={builtUpArea || ""}
                                 onChange={(e) => setBuiltUpArea(Number(e.target.value))} />
                         </div>
@@ -186,7 +186,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Filling Depth</h3>
+                            <h3 className="font-semibold">Filling Depth</h3>
                             <Input type="number" className="sm:w-56  my-3" placeholder="Filling Depth" value={fillingDepth || ""}
                                 onChange={(e) => setFillingDepth(Number(e.target.value))} />
                         </div>
@@ -195,7 +195,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Total Land Area</h3>
+                            <h3 className="font-semibold">Total Land Area</h3>
                             <Input type="number" className="sm:w-56 my-3" placeholder="Total Land Area" value={totalLandArea || ""}
                                 onChange={(e) => setTotalLandArea(Number(e.target.value))} />
                         </div>
@@ -204,7 +204,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Total Built Up Area</h3>
+                            <h3 className="font-semibold">Total Built Up Area</h3>
                             <Input type="number" className="sm:w-56 my-3" placeholder="Total Built Up Area" value={totalBuiltUpArea || ""}
                                 onChange={(e) => setTotalBuiltUpArea(Number(e.target.value))} />
                         </div>
@@ -213,7 +213,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Base Builtup Rate (raw)</h3>
+                            <h3 className="font-semibold">Base Builtup Rate (raw)</h3>
                             <Input type="number" className="sm:w-56 my-3" placeholder="Base Builtup Rate" value={baseBuiltupRate || ""}
                                 onChange={(e) => setBaseBuiltupRate(Number(e.target.value))} />
                         </div>
@@ -222,7 +222,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Land rate at purchase</h3>
+                            <h3 className="font-semibold">Land rate at purchase</h3>
                             <Input type="number" className="sm:w-56 my-3" placeholder="Land rate at purchase" value={landRateAtPurchase || ""}
                                 onChange={(e) => setLandRateAtPurchase(Number(e.target.value))} />
                         </div>
@@ -232,7 +232,7 @@ const BungalowConfig: React.FC = () => {
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
                             <div className="w-full lg:w-56 md:w-56 sm:w-56">
-                                <h3>Corner Plot</h3>
+                                <h3 className="font-semibold">Corner Plot</h3>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
                                         <Button variant="outline">{selectedCornerPlot || 'Select Whether Corner Plot'}</Button>
@@ -261,7 +261,7 @@ const BungalowConfig: React.FC = () => {
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
                         <div className=" sm:w-56  w-full">
-                            <h3>Select Facing Type</h3>
+                            <h3 className="font-semibold">Select Facing Type</h3>
                             <DropdownMenu>
                                 <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
                                     <Button variant="outline">{selectedFacingType || 'Select Facing Type'}</Button>
