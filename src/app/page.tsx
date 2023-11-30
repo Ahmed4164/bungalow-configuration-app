@@ -5,9 +5,9 @@ import BungalowConfig from "./BungalowConfig";
 
 const Home: React.FC = () => {
   const [selectedValues, setSelectedValues] = useState({
-    bungalowType: undefined,
-    cornerPlot: undefined,
-    facingType: undefined,
+    bungalowType: '',
+    cornerPlot: '',
+    facingType: '',
     fillingDepth: undefined,
     builtUpArea: undefined,
     landArea: undefined,
@@ -17,6 +17,7 @@ const Home: React.FC = () => {
     baseBuiltupRate: undefined,
     landRateAtPurchase: undefined,
   });
+  
 
   const handleSelectValues = (values: {
     bungalowType: string | undefined;
@@ -31,9 +32,22 @@ const Home: React.FC = () => {
     baseBuiltupRate: number | undefined;
     landRateAtPurchase: number | undefined;
   }) => {
-    setSelectedValues(values);
+    setSelectedValues((prevValues) => ({
+      ...prevValues,
+      bungalowType: values.bungalowType !== undefined ? values.bungalowType : prevValues.bungalowType,
+      cornerPlot: values.cornerPlot !== undefined ? values.cornerPlot : prevValues.cornerPlot,
+      facingType: values.facingType !== undefined ? values.facingType : prevValues.facingType,
+      fillingDepth: values.fillingDepth !== undefined ? values.fillingDepth : prevValues.fillingDepth,
+      builtUpArea: values.builtUpArea !== undefined ? values.builtUpArea : prevValues.builtUpArea,
+      landArea: values.landArea !== undefined ? values.landArea : prevValues.landArea,
+      totalLandArea: values.totalLandArea !== undefined ? values.totalLandArea : prevValues.totalLandArea,
+      totalBuiltUpArea: values.totalBuiltUpArea !== undefined ? values.totalBuiltUpArea : prevValues.totalBuiltUpArea,
+      numberOfFloors: values.numberOfFloors !== undefined ? values.numberOfFloors : prevValues.numberOfFloors,
+      baseBuiltupRate: values.baseBuiltupRate !== undefined ? values.baseBuiltupRate : prevValues.baseBuiltupRate,
+      landRateAtPurchase: values.landRateAtPurchase !== undefined ? values.landRateAtPurchase : prevValues.landRateAtPurchase,
+    }));
   };
-
+  
   // Constants for charges
   let sellFactor = 0.2;
   let developmentCharge = 200;
