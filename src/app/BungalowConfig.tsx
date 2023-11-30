@@ -109,7 +109,6 @@ const BungalowConfig: React.FC = () => {
         setFacingCharge(null);
         setGrandTotal(null);
     };
-    const isSmallScreen = window.innerWidth < 640;
     const data = [
         { label: "Current Land Price:", value: currentLandRate },
         { label: "Net Selling Land Price:", value: NetSellingLandPrice },
