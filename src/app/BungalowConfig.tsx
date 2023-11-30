@@ -61,14 +61,14 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
         setSelectedBungalowType('');
         setSelectedCornerPlot('');
         setSelectedFacingType('');
-        setFillingDepth(null);
-        setBuiltUpArea(null);
-        setLandArea(null);
-        setTotalLandArea(null);
-        setTotalBuiltUpArea(null);
-        setNumberOfFloors(null);
-        setBaseBuiltupRate(null);
-        setLandRateAtPurchase(null);
+        setFillingDepth(undefined);
+        setBuiltUpArea(undefined);
+        setLandArea(undefined);
+        setTotalLandArea(undefined);
+        setTotalBuiltUpArea(undefined);
+        setNumberOfFloors(undefined);
+        setBaseBuiltupRate(undefined);
+        setLandRateAtPurchase(undefined);
       };
     return (
         // <div className="grid grid-cols-4 justify-center items-center py-6">
@@ -78,7 +78,7 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
                     <div className=" sm:w-56  w-full">
                 <h3>Bungalow Type</h3>
                 <DropdownMenu>
-                    <DropdownMenuTrigger className="w-full my-2 justify-self-center" asChild>
+                    <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
                         <Button variant="outline">{selectedBungalowType || 'Select Bungalow Type'}</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className=" ">
@@ -147,7 +147,7 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
                 <div className="flex flex-col justify-center items-center">
                     <div className=" sm:w-56  w-full">
                     <h3>Filling Depth</h3>
-                        <Input type="number" className="sm:w-56  my-3" placeholder="Filling Depth" value={builtUpArea || ""}
+                        <Input type="number" className="sm:w-56  my-3" placeholder="Filling Depth" value={fillingDepth || ""}
                             onChange={(e) => setFillingDepth(Number(e.target.value))} />
                     </div>
                 </div>
@@ -156,7 +156,7 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
                 <div className="flex flex-col justify-center items-center">
                     <div className=" sm:w-56  w-full">
                     <h3>Total Land Area</h3>
-                    <Input type="number" className="sm:w-56 my-3" placeholder="total Lanfd Ares" value={totalLandArea || ""}
+                    <Input type="number" className="sm:w-56 my-3" placeholder="Total Land Area" value={totalLandArea || ""}
                     onChange={(e) => setTotalLandArea(Number(e.target.value))} />
                     </div>
                 </div>
@@ -165,7 +165,7 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
                 <div className="flex flex-col justify-center items-center">
                     <div className=" sm:w-56  w-full">
                     <h3>Total Built Up Area</h3>
-                    <Input type="number" className="sm:w-56 my-3" placeholder="totalBuiltUpArea" value={totalBuiltUpArea || ""}
+                    <Input type="number" className="sm:w-56 my-3" placeholder="Total Built Up Area" value={totalBuiltUpArea || ""}
                     onChange={(e) => setTotalBuiltUpArea(Number(e.target.value))} />
                     </div>
                 </div>
@@ -194,7 +194,7 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
                     <div className="w-full lg:w-56 md:w-56 sm:w-56">
                 <h3>Corner Plot</h3>
                 <DropdownMenu>
-                    <DropdownMenuTrigger className="w-56 my-3" asChild>
+                    <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
                         <Button variant="outline">{selectedCornerPlot || 'Select Whether Corner Plot'}</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56 my-3">
@@ -223,7 +223,7 @@ const BungalowConfig: React.FC<BungalowConfigProps> = ({ onSelectValues }) => {
                     <div className=" sm:w-56  w-full">
                     <h3>Select Facing Type</h3>
                 <DropdownMenu>
-                    <DropdownMenuTrigger className="w-56 my-3" asChild>
+                    <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
                         <Button variant="outline">{selectedFacingType || 'Select Facing Type'}</Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="w-56 my-3">
