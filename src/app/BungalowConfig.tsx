@@ -109,20 +109,30 @@ const BungalowConfig: React.FC = () => {
         setFacingCharge(null);
         setGrandTotal(null);
     };
-
+    const isSmallScreen = window.innerWidth < 640;
+    const data = [
+        { label: "Current Land Price:", value: currentLandRate },
+        { label: "Net Selling Land Price:", value: NetSellingLandPrice },
+        { label: "Land Price:", value: landPrice },
+        { label: "Base rate with floor addition:", value: baserateWithFlooraAddition },
+        { label: "Base price:", value: buildingPrice },
+        { label: "Sub Total:", value: subTotal },
+        { label: "Corner Charge:", value: cornerCharge },
+        { label: "Facing Charge:", value: facingCharge },
+        { label: "Grand Total:", value: grandTotal },
+    ];
     return (
-        <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center py-6">
+        <form className="px-4">
+            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-y-10 md:gap-x-20 justify-center items-center lg:gap-x-25">
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Bungalow Type</h3>
+                        <div className="  sm:w-56   w-full">
+                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="bungalowType">Bungalow Type</label>
                             <DropdownMenu>
-                                <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
+                                <DropdownMenuTrigger className="w-full my-2 justify-start" id="bungalowType" asChild>
                                     <Button variant="outline">{selectedBungalowType || 'Select Bungalow Type'}</Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className=" ">
-                                    <DropdownMenuLabel>Select Bungalow Type</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuCheckboxItem
                                         checked={selectedBungalowType === 'Raw'}
@@ -167,78 +177,77 @@ const BungalowConfig: React.FC = () => {
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Land Area</h3>
-                            <Input type="number" className="sm:w-56  my-3" placeholder="Land Area" value={landArea || ""}
+                        <div className="   sm:w-56     w-full">
+                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="landArea">Land Area (Sq. Ft.)</label>
+                            <Input type="number" id="landArea" className="  sm:w-56     my-3" placeholder="Land Area" value={landArea || ""}
                                 onChange={(e) => setLandArea(Number(e.target.value))} />
                         </div>
                     </div>
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Built-Up Area</h3>
-                            <Input type="number" className="sm:w-56  my-3" placeholder="Built-Up Area" value={builtUpArea || ""}
+                        <div className="   sm:w-56     w-full">
+                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="builtUpArea">Built-Up Area (Sq. Ft.)</label>
+                            <Input type="number" id="builtUpArea" className="  sm:w-56     my-3" placeholder="Built-Up Area" value={builtUpArea || ""}
                                 onChange={(e) => setBuiltUpArea(Number(e.target.value))} />
                         </div>
                     </div>
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Filling Depth</h3>
-                            <Input type="number" className="sm:w-56  my-3" placeholder="Filling Depth" value={fillingDepth || ""}
+                        <div className="   sm:w-56    w-full">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="fillingDepth">Filling Depth (Sq. Ft.)</label>
+                            <Input type="number" id="fillingDepth" className="  sm:w-56     my-3" placeholder="Filling Depth" value={fillingDepth || ""}
                                 onChange={(e) => setFillingDepth(Number(e.target.value))} />
                         </div>
                     </div>
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Total Land Area</h3>
-                            <Input type="number" className="sm:w-56 my-3" placeholder="Total Land Area" value={totalLandArea || ""}
+                        <div className="  sm:w-56     w-full">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="totalLandArea">Total Land Area (Sq. Ft.)</label>
+                            <Input type="number" id="totalLandArea" className="  sm:w-56    my-3" placeholder="Total Land Area" value={totalLandArea || ""}
                                 onChange={(e) => setTotalLandArea(Number(e.target.value))} />
                         </div>
                     </div>
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Total Built Up Area</h3>
-                            <Input type="number" className="sm:w-56 my-3" placeholder="Total Built Up Area" value={totalBuiltUpArea || ""}
+                        <div className="   sm:w-56     w-full">
+                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="totalBuiltUpArea">Total Built Up Area (Sq. Ft.)</label>
+                            <Input type="number" id="totalBuiltUpArea" className="  sm:w-56    my-3" placeholder="Total Built Up Area" value={totalBuiltUpArea || ""}
                                 onChange={(e) => setTotalBuiltUpArea(Number(e.target.value))} />
                         </div>
                     </div>
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Base Builtup Rate (raw)</h3>
-                            <Input type="number" className="sm:w-56 my-3" placeholder="Base Builtup Rate" value={baseBuiltupRate || ""}
+                        <div className="   sm:w-56     w-full">
+                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="baseBuiltUpRate">Base Builtup Rate (raw) (Sq. Ft.)</label>
+                            <Input type="number" id="baseBuiltUpRate" className="  sm:w-56    my-3" placeholder="Base Builtup Rate" value={baseBuiltupRate || ""}
                                 onChange={(e) => setBaseBuiltupRate(Number(e.target.value))} />
                         </div>
                     </div>
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Land rate at purchase</h3>
-                            <Input type="number" className="sm:w-56 my-3" placeholder="Land rate at purchase" value={landRateAtPurchase || ""}
+                        <div className="   sm:w-56     w-full">
+                        <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="landRatePurchase">Land rate at purchase (Sq. Ft.)</label>
+                            <Input type="number" id="landRatePurchase" className="  sm:w-56    my-3" placeholder="Land rate at purchase" value={landRateAtPurchase || ""}
                                 onChange={(e) => setLandRateAtPurchase(Number(e.target.value))} />
                         </div>
                     </div>
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <div className="w-full lg:w-56 md:w-56 sm:w-56">
-                                <h3 className="font-semibold">Corner Plot</h3>
+                        <div className="   sm:w-56     w-full">
+                            <div className="w-full lg:w-56 md:w-56   sm:w-56   ">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="cornerPlot">Corner Plot</label>
                                 <DropdownMenu>
-                                    <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
-                                        <Button variant="outline">{selectedCornerPlot || 'Select Whether Corner Plot'}</Button>
+                                    <DropdownMenuTrigger id="cornerPlot" className="w-full my-2 justify-start" asChild>
+                                        <Button variant="outline" className="text-custom-color placeholder-gray-700" >{selectedCornerPlot || 'Select Whether Corner Plot'}</Button>
                                     </DropdownMenuTrigger>
                                     <DropdownMenuContent className="w-56 my-3">
-                                        <DropdownMenuLabel>Corner Plot</DropdownMenuLabel>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuCheckboxItem
                                             checked={selectedCornerPlot === 'Yes'}
@@ -260,14 +269,13 @@ const BungalowConfig: React.FC = () => {
                 </div>
                 <div className="justify-self-center w-full">
                     <div className="flex flex-col justify-center items-center">
-                        <div className=" sm:w-56  w-full">
-                            <h3 className="font-semibold">Select Facing Type</h3>
+                        <div className="  sm:w-56     w-full">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" htmlFor="facingType">Select Facing Type</label>
                             <DropdownMenu>
-                                <DropdownMenuTrigger className="w-full my-2 justify-start" asChild>
+                                <DropdownMenuTrigger id="facingType" className="w-full my-2 justify-start" asChild>
                                     <Button variant="outline">{selectedFacingType || 'Select Facing Type'}</Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="w-56 my-3">
-                                    <DropdownMenuLabel>Select Facing Type</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuCheckboxItem
                                         checked={selectedFacingType === 'East'}
@@ -298,34 +306,40 @@ const BungalowConfig: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                {/* <div className="grid grid-cols-2 border border-red-500 gap-3"> */}
                 <div className=" justify-self-center w-full">
-                    <div className=" flex flex-col justify-center items-center">
-                        <div className="  my-3 sm:w-56  flex flex-col justify-center items-cente w-full">
-                            <Button onClick={handleFormSubmit}>Submit</Button>
+                        <div className=" flex flex-col justify-center items-center">
+                            <div className="  my-3  sm:w-56     flex flex-col justify-center items-cente w-full">
+                                <Button onClick={handleFormSubmit}>Submit</Button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className=" justify-self-center w-full">
-                    <div className=" flex flex-col justify-center items-center">
-                        <div className="  my-3 sm:w-56  flex flex-col justify-center items-cente w-full">
-                            <Button onClick={handleFormReset}>Reset</Button>
+                    <div className=" justify-self-center w-full">
+                        <div className=" flex flex-col justify-center items-center">
+                            <div className="  my-3   sm:w-56    flex flex-col justify-center items-cente w-full">
+                                <Button onClick={handleFormReset}>Reset</Button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
             </div>
             <div>
-                <h3>Current Land Price: {currentLandRate ? currentLandRate : 0}</h3>
-                <h3>Net Selling Land Price: {NetSellingLandPrice ? NetSellingLandPrice : 0}</h3>
-                <h3>Land Price: {landPrice ? landPrice : 0}</h3>
-                <h3>Base rate with floor addition: {baserateWithFlooraAddition ? baserateWithFlooraAddition : 0}</h3>
-                <h3>Base price: {buildingPrice ? buildingPrice : 0}</h3>
-                <h3>Sub Total: {subTotal ? subTotal : 0}</h3>
-                <h3>Corner Charge: {cornerCharge ? cornerCharge : 0}</h3>
-                <h3>Facing Charge: {facingCharge ? facingCharge : 0}</h3>
-                <h3>Grand Total: {grandTotal ? grandTotal : 0}</h3>
-
+                <div className="grid grid-cols-1 sm:grid-cols-2  md:gap-x-8 lg:px-8">
+                    {data.map((item, index) => (
+                        <div key={index} className="p-2">
+                            <div className="grid grid-cols-2 justify-between">
+                                <div>
+                                    <h1>{item.label}</h1>
+                                </div>
+                                <div className="flex items-end justify-end">
+                                    <h1>{item.value ? item.value : 0}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </>
+        </form>
     );
 }
 export default BungalowConfig;
