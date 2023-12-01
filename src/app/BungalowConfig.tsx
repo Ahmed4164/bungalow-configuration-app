@@ -119,15 +119,15 @@ export default function Home() {
 
     fn.setOutput(prev => {
       return [
-        { name: "currentLandRate", value: currentLandRate },
-        { name: "NetSellingLandPrice", value: NetSellingLandPrice },
-        { name: "landPrice", value: landPrice },
-        { name: "baserateWithFlooraAddition", value: baserateWithFlooraAddition },
-        { name: "buildingPrice", value: buildingPrice },
-        { name: "subTotal", value: subTotal },
-        { name: "facingCharge", value: facingCharge },
-        { name: "cornerCharge", value: cornerCharge },
-        { name: "grandTotal", value: grandTotal },
+        { name: "currentLandRate", value: currentLandRate ?? 0 },
+        { name: "NetSellingLandPrice", value: NetSellingLandPrice ?? 0 },
+        { name: "landPrice", value: landPrice ?? 0  },
+        { name: "baserateWithFlooraAddition", value: baserateWithFlooraAddition ?? 0  },
+        { name: "buildingPrice", value: buildingPrice ?? 0  },
+        { name: "subTotal", value: subTotal ?? 0  },
+        { name: "facingCharge", value: facingCharge ?? 0  },
+        { name: "cornerCharge", value: cornerCharge ?? 0  },
+        { name: "grandTotal", value: grandTotal ?? 0  },
       ]
     })
   }
