@@ -16,20 +16,20 @@ const FormSchema = z.object({
   landArea: z.coerce.number().min(3, {
     message: 'Land Area must be at least 3.',
   }),
-  fillingDepth: z.coerce.number().min(3, {
-    message: 'Land Area must be at least 3.',
+  fillingDepth: z.coerce.number().min(2, {
+    message: 'Filling Depth must be at least 2.',
   }),
   totalLandArea: z.coerce.number().min(10, {
-    message: 'Land Area must be at least 3.',
+    message: 'Total Land Area be at least 3.',
   }),
   totalBuiltUpArea: z.coerce.number().min(3, {
-    message: 'Land Area must be at least 3.',
+    message: 'Total BuiltUp must be at least 3.',
   }),
   baseBuiltUpRate: z.coerce.number().min(100000, {
-    message: 'Land Rate must be at least 100000.',
+    message: 'Base BuiltUp Rate be at least 100000.',
   }),
   landRatePurchase: z.coerce.number().min(100000, {
-    message: 'Land Rate must be at least 100000.',
+    message: 'Land Rate Purxhase must be at least 100000.',
   }),
 })
 
@@ -325,8 +325,8 @@ export default function Home() {
               </FormItem>
             )}
           />
-          <div className=" flex justify-center items-end">
-            <Button className="w-full my-2 " onClick={handleFormReset}>RESET</Button>
+          <div className="flex justify-center items-end">
+            <Button className="w-full my-3 sm:my-0" onClick={handleFormReset}>RESET</Button>
           </div>
         </div>
         <div className="">
@@ -345,7 +345,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-
       </form>
     </Form>
   )
