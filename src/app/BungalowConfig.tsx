@@ -74,17 +74,17 @@ export interface BaseInputTypes {
   value: string;
 }
 const initialOutputValues = [
-  { name: "landPrice", value: "INR 26,00,260"},
-  { name: "buildingPrice", value: "INR 98,69,600"},
-  { name: "subTotal", value: "INR 1,24,69,860"},
-  { name: "cornerCharge", value: "INR 1,24,698.6"},
-  { name: "facingCharge", value: "INR 6,23,493"},
-  { name: "fillingCharge", value: "INR 60"},
-  { name: "remotenessCharge", value: "INR 19,739.2"},
-  { name: "projectManagement", value: "INR 1,24,69,860"},
-  { name: "projectAdjustmentCharge", value: "INR 1,24,698.6"},
-  { name: "unitCharge", value: "INR 1,24,698.6"},
-  { name: "grandTotal", value: "INR 2,58,32,409.4"},
+  { name: "Land Price", value: "INR 26,00,260"},
+  { name: "Building Price", value: "INR 98,69,600"},
+  { name: "Sub Total", value: "INR 1,24,69,860"},
+  { name: "Corner Charge", value: "INR 1,24,698.6"},
+  { name: "Facing Charge", value: "INR 6,23,493"},
+  { name: "Filling Charge", value: "INR 60"},
+  { name: "Remoteness Charge", value: "INR 19,739.2"},
+  { name: "Project Management Cost", value: "INR 1,24,69,860"},
+  { name: "Project Adjustment Charge", value: "INR 1,24,698.6"},
+  { name: "UnitC harge", value: "INR 1,24,698.6"},
+  { name: "Grand Total", value: "INR 2,58,32,409.4"},
 ]
 
 export default function Home() {
@@ -226,17 +226,17 @@ export default function Home() {
 
     fn.setOutput(prev => {
       return [
-        { name: "landPrice", value: formattedlandPrice ?? 0 },
-        { name: "buildingPrice", value: formattedbuildingPrice ?? 0 },
-        { name: "subTotal", value: formattedsubTotal ?? 0 },
-        { name: "cornerCharge", value: formattedcornerCharge ?? 0 },
-        { name: "facingCharge", value: formattedfacingCharge ?? 0 },
-        { name: "fillingCharge", value: formattedfillingCharge ?? 0 },
-        { name: "remotenessCharge", value: formattedremotenessCharge ?? 0 },
-        { name: "projectManagement", value: formattedprojectManagement ?? 0 },
-        { name: "projectAdjustmentCharge", value: formattedprojectAdjustmentCharge ?? 0 },
-        { name: "unitCharge", value: formattedunitCharge ?? 0 },
-        { name: "grandTotal", value: formattedGrandTotal ?? 0 },
+        { name: "Land Price", value: formattedlandPrice ?? 0 },
+        { name: "Building Price", value: formattedbuildingPrice ?? 0 },
+        { name: "Sub Total", value: formattedsubTotal ?? 0 },
+        { name: "Corner Charge", value: formattedcornerCharge ?? 0 },
+        { name: "Facing Charge", value: formattedfacingCharge ?? 0 },
+        { name: "Filling Charge", value: formattedfillingCharge ?? 0 },
+        { name: "Remoteness Charge", value: formattedremotenessCharge ?? 0 },
+        { name: "Project Management Cost", value: formattedprojectManagement ?? 0 },
+        { name: "Project Adjustment Charge", value: formattedprojectAdjustmentCharge ?? 0 },
+        { name: "UnitC harge", value: formattedunitCharge ?? 0 },
+        { name: "Grand Total", value: formattedGrandTotal ?? 0 },
       ]
     })
   }
@@ -302,7 +302,7 @@ export default function Home() {
             name="numberOfFloors"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Number of floors</FormLabel>
+                <FormLabel>Number of Floors</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
@@ -429,7 +429,7 @@ export default function Home() {
             name="devCharge"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Dev charge</FormLabel>
+                <FormLabel>Development Charge</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
@@ -446,7 +446,7 @@ export default function Home() {
             name="legalCharge"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Legal charge</FormLabel>
+                <FormLabel>Legal Charge</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
@@ -463,7 +463,7 @@ export default function Home() {
             name="adjustmentFactor"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Adjustment FACTOR</FormLabel>
+                <FormLabel>Adjustment Factor</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
@@ -498,7 +498,7 @@ export default function Home() {
             name="cornerFactor"
             render={({ field }) => (
               <FormItem>
-                <FormLabel> Corner factor</FormLabel>
+                <FormLabel> Corner Factor</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
@@ -515,7 +515,7 @@ export default function Home() {
             name="projectManagement"
             render={({ field }) => (
               <FormItem>
-                <FormLabel> Project management</FormLabel>
+                <FormLabel> Project Management Cost</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
@@ -626,8 +626,8 @@ export default function Home() {
               </FormItem>
             )}
           />
-          <div className="flex justify-center items-end">
-            <Button className="w-full my-3 sm:my-0" onClick={handleFormReset}>RESET</Button>
+          <div className="flex sm:mx-10 justify-center items-end sm:col-span-2 md:col-span-2 lg:col-span-3 ">
+            <Button className="w-full my-3 lg:my-0" onClick={handleFormReset}>RESET</Button>
           </div>
         </div>
         <div className="">
