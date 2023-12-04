@@ -77,7 +77,7 @@ const initialOutputValues = [
   { name: "Building Price", value: "INR 1,20,000"},
   { name: "Sub Total", value: "INR 2,20,200"},
   { name: "Corner Charge", value: "INR 2,202"},
-  { name: "Facing Charge", value: "INR 11,010"},
+  { name: "Facing Charge", value: "INR 0"},
   { name: "Filling Charge", value: "INR 50"},
   { name: "Remoteness Charge", value: "INR 240"},
   { name: "Project Management Cost", value: "INR 2,20,200"},
@@ -109,7 +109,7 @@ export default function Home() {
       unitAdjustmentFactor:0.5,
       unitFillingDepth:1,
       cornerFacing: 'Yes',
-      facingType: 'East',
+      facingType: 'Nofacing',
       AdditionalSemiFinishedBuiltupArea: 50,
 
     },
@@ -124,18 +124,20 @@ export default function Home() {
 
   const updateOutput = (fn: UpdateOutput) => {
     const facingPercentages: {
+      Nofacing:number,
       East: number;
       West: number;
       North: number;
       South: number;
     } = {
+      Nofacing:0,
       East: 5,
       West: 4,
       North: 3,
       South: 2,
     };
     const facingType = fn.values.facingType as keyof typeof facingPercentages;
-    const defaultFacingPercentage = 2;
+    const defaultFacingPercentage = 0;
     const facingPercentage = facingPercentages[facingType] || defaultFacingPercentage;
 
     let Netsellinglandrate = ((fn.values.landValueSellFactor)*(fn.values.landRateAtPurchase+fn.values.currentLandRate)) + fn.values.devCharge+ fn.values.legalCharge;
@@ -159,7 +161,7 @@ export default function Home() {
     const bungalowType = fn.values.bungalowType as keyof typeof bungalowPreferences;
     const defaultbungalowPreference = 1000;
     const bungalowPreference = bungalowPreferences[bungalowType] || defaultbungalowPreference;
-    console.log('@@',bungalowPreference)
+    
     let rawMarkup = fn.values.numberOfFloors <= 3? fn.values.baseBuiltUpRate:  fn.values.baseBuiltUpRate * (1 + (5 / 100) * (fn.values.numberOfFloors - 3))
 
     if(bungalowPreference==1200){
@@ -186,7 +188,7 @@ export default function Home() {
     let subTotal=landPrice + buildingPrice;
     subTotal = parseFloat(subTotal.toFixed(2));
     const formattedsubTotal = `INR ${subTotal.toLocaleString('en-IN')}`;
-
+    
     let cornerCharge =(subTotal*fn.values.projectManagement)/100
     cornerCharge = parseFloat(cornerCharge.toFixed(2));
     const formattedcornerCharge = `INR ${cornerCharge.toLocaleString('en-IN')}`;
@@ -598,6 +600,7 @@ export default function Home() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
+                    <SelectItem value="Nofacing">No Facing</SelectItem>
                     <SelectItem value="East">East</SelectItem>
                     <SelectItem value="West">West</SelectItem>
                     <SelectItem value="North">North</SelectItem>
