@@ -18,53 +18,52 @@ const FormSchema = z.object({
     message: 'Number of floors must be atleast 1.',
   }),
   totalBuiltUpArea: z.coerce.number().min(50, {
-    message: 'Total totalBuiltUpArea must be at least 50.',
+    message: 'Total BuiltUp Area must be at least 50.',
   }),
-  remotenessFactor: z.coerce.number().max(1, {
-    message: 'remotenessFactor max value is 1',
+  remotenessFactor:  z.coerce.number().refine((value) => value >= 0 && value <= 1, {
+    message: 'Remoteness Factor must be in between 0 and 1.',
   }),
-  baseBuiltUpRate: z.coerce.number().min(100000, {
-    message: 'Base BuiltUp Rate be at least 100000.',
+  baseBuiltUpRate: z.coerce.number().min(1000, {
+    message: 'Base BuiltUp Rate be at least 1000.',
   }),
-  landRateAtPurchase: z.coerce.number().min(10000, {
-    message: 'landRateAtPurchase Rate be at least 10000.',
+  landRateAtPurchase: z.coerce.number().min(1000, {
+    message: 'Land Rate At Purchase must be least 1000.',
   }),
-  currentLandRate: z.coerce.number().min(10000, {
-    message: 'currentLandRate Rate be at least 10000.',
+  currentLandRate: z.coerce.number().min(1000, {
+    message: 'Current Land Rate must be at least 1000.',
   }),
-  landValueSellFactor: z.coerce.number().min(0, {
-    message: 'landValueSellFactor Rate be at least 1.',
+  landValueSellFactor: z.coerce.number().refine((value) => value >= 0 && value <= 1, {
+    message: 'Land Value Sell Factor must be in between 0 and 1.',
   }),
   devCharge: z.coerce.number().min(1, {
-    message: 'devCharge Rate be at least 1.',
+    message: 'Development Charge must be at least 1.',
   }),
   legalCharge: z.coerce.number().min(1, {
-    message: 'legalCharge Rate be at least 1.',
+    message: 'Legal Charge Rate must be at least 1.',
   }),
-  adjustmentFactor: z.coerce.number().min(1, {
-    message: 'adjustmentFactor Rate be at least 1.',
+  adjustmentFactor: z.coerce.number().refine((value) => value >= 0 && value <= 1, {
+    message: 'Adjustment Factor must be in between 0 and 1.',
   }),
   fillingRate: z.coerce.number().min(1, {
-    message: 'filling Rate be at least 1.',
+    message: 'Filling Rate must be at least 1.',
   }),
-  cornerFactor: z.coerce.number().min(1, {
-    message: 'cornerFactorbe at least 1.',
+  cornerFactor: z.coerce.number().refine((value) => value >= 0 && value <= 1, {
+    message: 'Corner Factor must be in between 0 and 1.',
   }),
   projectManagement: z.coerce.number().min(1, {
-    message: 'projectManagement cost at least 1.',
+    message: 'Project Management cost must at least 1.',
   }),
-  unitAdjustmentFactor: z.coerce.number().min(1, {
-    message: 'unitAdjustmentFactor cost at least 1.',
+  unitAdjustmentFactor: z.coerce.number().refine((value) => value >= 0 && value <= 1, {
+    message: 'Unit Adjustment Factor must be in between 0 and 1.',
   }),
   unitFillingDepth: z.coerce.number().min(1, {
-    message: 'unitFillingDepth cost at least 1.',
+    message: 'Unit Filling Depth cost at least 1.',
   }),
   cornerFacing: z.string(),
   facingType: z.string(),
-  AdditionalSemiFinishedBuiltupArea: z.coerce.number().min(3, {
-    message: 'AdditionalSemiFinishedBuiltupArea must be at least 3.',
+  AdditionalSemiFinishedBuiltupArea: z.coerce.number().min(50, {
+    message: 'Additional Semi Finished Builtup Area must be at least 50.',
   }),
-  
 })
 
 export interface FixedTypes extends Array<BaseInputTypes> { }
@@ -74,17 +73,17 @@ export interface BaseInputTypes {
   value: string;
 }
 const initialOutputValues = [
-  { name: "Land Price", value: "INR 26,00,260"},
-  { name: "Building Price", value: "INR 98,69,600"},
-  { name: "Sub Total", value: "INR 1,24,69,860"},
-  { name: "Corner Charge", value: "INR 1,24,698.6"},
-  { name: "Facing Charge", value: "INR 6,23,493"},
-  { name: "Filling Charge", value: "INR 60"},
-  { name: "Remoteness Charge", value: "INR 19,739.2"},
-  { name: "Project Management Cost", value: "INR 1,24,69,860"},
-  { name: "Project Adjustment Charge", value: "INR 1,24,698.6"},
-  { name: "UnitC harge", value: "INR 1,24,698.6"},
-  { name: "Grand Total", value: "INR 2,58,32,409.4"},
+  { name: "Land Price", value: "INR 1,00,200"},
+  { name: "Building Price", value: "INR 1,20,000"},
+  { name: "Sub Total", value: "INR 2,20,200"},
+  { name: "Corner Charge", value: "INR 2,202"},
+  { name: "Facing Charge", value: "INR 11,010"},
+  { name: "Filling Charge", value: "INR 50"},
+  { name: "Remoteness Charge", value: "INR 240"},
+  { name: "Project Management Cost", value: "INR 2,20,200"},
+  { name: "Project Adjustment Charge", value: "INR 1,101"},
+  { name: "Unit Charge", value: "INR 1,101"},
+  { name: "Grand Total", value: "INR 4,53,902"},
 ]
 
 export default function Home() {
@@ -93,25 +92,25 @@ export default function Home() {
     resolver: zodResolver(FormSchema),
     defaultValues: {
       bungalowType: 'Raw',
-      totalLandArea: 60,
-      numberOfFloors:10,
-      totalBuiltUpArea: 70,
+      totalLandArea: 50,
+      numberOfFloors:1,
+      totalBuiltUpArea: 50,
       remotenessFactor:0.2,
-      baseBuiltUpRate: 100000,
-      landRateAtPurchase:10000,
-      currentLandRate:10000,
-      landValueSellFactor:1,
+      baseBuiltUpRate: 1000,
+      landRateAtPurchase:1000,
+      currentLandRate:1000,
+      landValueSellFactor:0.5,
       devCharge:1,
       legalCharge:1,
-      adjustmentFactor:1,
+      adjustmentFactor:0.5,
       fillingRate:1,
-      cornerFactor:1,
+      cornerFactor:0.5,
       projectManagement:1,
-      unitAdjustmentFactor:1,
+      unitAdjustmentFactor:0.5,
       unitFillingDepth:1,
       cornerFacing: 'Yes',
       facingType: 'East',
-      AdditionalSemiFinishedBuiltupArea: 3,
+      AdditionalSemiFinishedBuiltupArea: 50,
 
     },
     mode: "onChange",
@@ -345,7 +344,7 @@ export default function Home() {
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
-                    placeholder="Total BuiltUp Area (Sq. Ft.)"
+                    placeholder="Remoteness Factor"
                     {...field}
                   />
                 </FormControl>
@@ -376,11 +375,11 @@ export default function Home() {
             name="landRateAtPurchase"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Land Rate at Purchase Area (Sq. Ft.)</FormLabel>
+                <FormLabel>Land Rate at Purchase</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
-                    placeholder="Land Rate At Purchase(Sq. Ft.)"
+                    placeholder="Land Rate At Purchase"
                     {...field}
                   />
                 </FormControl>
@@ -397,7 +396,7 @@ export default function Home() {
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
-                    placeholder=" Current land rate as per market(Sq. Ft.)"
+                    placeholder="Current land rate as per market"
                     {...field}
                   />
                 </FormControl>
@@ -433,7 +432,7 @@ export default function Home() {
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
-                    placeholder="Dev charge"
+                    placeholder="Development charge"
                     {...field}
                   />
                 </FormControl>
@@ -450,7 +449,7 @@ export default function Home() {
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
-                    placeholder="Legal charge"
+                    placeholder="Legal Charge"
                     {...field}
                   />
                 </FormControl>
@@ -467,7 +466,7 @@ export default function Home() {
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
-                    placeholder="Adjustment FACTOR"
+                    placeholder="Adjustment Factor"
                     {...field}
                   />
                 </FormControl>
@@ -498,7 +497,7 @@ export default function Home() {
             name="cornerFactor"
             render={({ field }) => (
               <FormItem>
-                <FormLabel> Corner Factor</FormLabel>
+                <FormLabel>Corner Factor</FormLabel>
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
@@ -519,7 +518,7 @@ export default function Home() {
                 <FormControl onChange={form.handleSubmit(onSubmit)}>
                   <Input
                     type="number"
-                    placeholder=" Project management"
+                    placeholder=" Project management cost"
                     {...field}
                   />
                 </FormControl>
